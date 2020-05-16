@@ -29,15 +29,28 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain how to build stateful class components.
-
+Declare your class component by extending the React.Component parent class. Use a constructor function to set up some state-- and because you're calling 'extends' you also need to call super (otherwise you don't have access to 'this'). Then you need to render some UI to the DOM by calling 'render'.
 
 2. Describe the different phases of the component lifecycle.
+First is the Birth/Mounting phase, which as the name implies, is when the component is built. This is also where you define any initial data you may want access to. This phase is where your render method is evoked and where componentDidMount is called as well.
+
+Next is the Growth/Updating phase. This is where you update the component data i.e. setState or shouldComponentUpdate (to stop a component from calling render if necessary).
+
+Last is the Death/Unmounting phase. As the name would suggest, this is where we remove the component from the screen. This is where componentWillUnmount is called (to be used for any clean up that may be necessary).
 
 3. Demonstrate an understanding of class component lifecycle methods.
+componentWillUnmount: the component is about to appear on the screen from the render funciton. Since the component has not mounted yet, there is no interaction from the DOM.
+
+componentDidMount: the component is mounted and ready to receive data from external APIs (axios or fetch). Event listeners are added and AJAX calls are started here.
+
+componentWillUnmount: the component is about to be removed from the DOM. Network requests are cancelled and event listeners are removed.
 
 4. Define stateful logic.
+Stateful logic is conditional logic that changes our component's state (i.e. dark mode, not dark mode). To set dark mode, conditional logic is used with if/then statements and this logic affects the state of the component.
 
 5. Describe how to test a React component with React Testing Library.
+
+First, test that the component renders without errors in a test fuction. Then, test the functionality of the component by selecting specific parts of the component (i.e. getByLabelText, getByRole, etc.). fireEvent.change is used to enter 'dummy data' into the parts of the component and that's how the component is tested.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
@@ -120,7 +133,7 @@ After finishing your required elements, you can push your work further. These go
 
 - [ ] Add a filter input to the plant list page.
 - [ ] Build and implement another custom hook - a dark mode hook would be great for this project, though you'll have to style the light theme ☀️ 🌙
-- [ ] Add a test file for the `ShoppingCart` component and test that it displays plants there (you'll need some mock plant data for the test, and then you can pass that data in as a prop when you call `render` and render the component - see the example below)
+- [x] Add a test file for the `ShoppingCart` component and test that it displays plants there (you'll need some mock plant data for the test, and then you can pass that data in as a prop when you call `render` and render the component - see the example below)
 
 ```js
 const plants = {{}, {}, {}} // with each object being a mock plant
